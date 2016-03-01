@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for m in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">{{ m }}</div>
+    {% endfor %}
+{{ form(form) }}
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

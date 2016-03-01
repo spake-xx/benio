@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Podmiot</th>
+            <th class="text-center">Zadania</th>
+            <th class="text-center">PKD</th>
+            <th class="text-center">Uwagi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for umowa in umowy %}
+            <tr class="info text-center">
+                <td>{{ umowa.id }}</td>
+                <td>{{ umowa.podmiot }}</td>
+                <td>{{ umowa.zadanie }}</td>
+                <td>{{ umowa.pkd }}</td>
+                <td>{{ umowa.uwagi }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
