@@ -55,13 +55,28 @@
             <div class="panel panel-user">
                 <div class="panel-heading">
                     Dane
-                    <hr>
                 </div>
                 <div class="panel-body">
                     <table class="table">
                         <tr>
                             <th>Użytkownik</th>
                             <td>{{ app.user.username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Samorząd</th>
+                            <td>{{ app.user.samorzad.samorzad }}</td>
+                        </tr>
+                        <tr>
+                            <th>Województwo</th>
+                            <td>{{ app.user.samorzad.wojewodztwo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Miasto</th>
+                            <td>{{ app.user.samorzad.miejscowosc }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adres</th>
+                            <td>{{ app.user.samorzad.kodpocztowy }} {{ app.user.samorzad.ulica }} {{ app.user.samorzad.nrdomu }}</td>
                         </tr>
                     </table>
                 </div>
@@ -80,9 +95,3 @@
         </div>
     </div>
 </div>
-<footer class="footer">
-    Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже.
-    <br>Praktykanci Media 3.0
-</footer>
-</body>
-</html>
