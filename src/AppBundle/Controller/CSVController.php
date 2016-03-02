@@ -44,27 +44,28 @@ class CSVController extends Controller
             $pola = array('podmiot', 'zadanie', 'pkd', 'uwagi', 'kwota');
             foreach($pola as $k=>$p){
                 if($headers[$k]!=$p){
-                    print "Zła kolejność !";
-                    die();
+                    $this->addFlash('warning', "Zła kolejność kolumn w pliku CSV !");
+                    return $this->render('user/import_form.html.twig', array(
+                        'form'=>$form->createView(),
+                    ));
                 }
             }
 
 
             $Data = array();
+            array_pop($context);
             foreach($context as $linia){
-                if(!feof($file)) {
                     $Data[] = str_getcsv($linia, ",", '"'); //parse the rows
-                }
 
             }
             foreach($Data as $u) {
-                print $u[1];
                 $umowa = new Umowa();
                 $umowa->setPodmiot($u[0]);
                 $umowa->setZadanie($u[1]);
                 $umowa->setPkd($u[2]);
                 $umowa->setUwagi($u[3]);
                 $umowa->setKwota($u[4]);
+                $umowa->setSamorzad($this->getUser()->getSamorzad());
 
                 $em->persist($umowa);
                 $em->flush();

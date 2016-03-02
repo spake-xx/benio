@@ -1,4 +1,3 @@
-{% set user = app.security.getToken().getUser() %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +10,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    Zalogowany jako {{ user.username }} (Samorząd {{ user.samorzad.samorzad }})
+     Zalogowany jako {{ app.user.username }} (Samorząd {{ app.user.samorzad.samorzad }})
         {% block body %}
         {% block content %}
         {% endblock %}
