@@ -10,7 +10,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {% if app.user %}
      Zalogowany jako {{ app.user.username }} (Samorząd {{ app.user.samorzad.samorzad }})
+    {% endif %}
         {% block body %}
         {% block content %}
         {% endblock %}
