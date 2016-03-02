@@ -3,17 +3,38 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
+{#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+    {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+
+    {#<label for="username">{{ 'security.login.username'|trans }}</label>#}
+    {#<input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />#}
+
+    {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
+    {#<input class="form-control" type="password" id="password" name="_password" required="required" />#}
+
+    {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+    {#<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
+
+    {#<input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
+{#</form>#}
+<form id="login-form" method="post" role="form" action="{{ path("fos_user_security_check") }}" style="display: block;">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input class="form-control" type="password" id="password" name="_password" required="required" />
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-    <input class="btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    <div class="form-group">
+        <input type="text" name="_username" value="{{ last_username }}" required="required" id="username" tabindex="1" class="form-control" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <input type="password" name="_password" required="required" id="password" tabindex="2" class="form-control" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />Dla kumatych
+        {#<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" style="background-color: #fba24e;" name="_submit" value="{{ 'security.login.submit'|trans }}" id="login-submit" tabindex="4" class="form-control btn btn-login">
+            </div>
+        </div>
+    </div>
 </form>
