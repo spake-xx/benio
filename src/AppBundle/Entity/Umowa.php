@@ -36,6 +36,17 @@ class Umowa
     protected $uwagi;
 
     /**
+     * @ORM\Column(type="float")
+     */
+    protected $kwota;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Samorzad")
+     * @ORM\JoinColumn(name="samorzad", referencedColumnName="kod")
+     */
+    protected $samorzad;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -135,5 +146,51 @@ class Umowa
     public function getUwagi()
     {
         return $this->uwagi;
+    }
+
+    /**
+     * Set kwota
+     *
+     * @param float $kwota
+     * @return Umowa
+     */
+    public function setKwota($kwota)
+    {
+        $this->kwota = $kwota;
+
+        return $this;
+    }
+
+    /**
+     * Get kwota
+     *
+     * @return float 
+     */
+    public function getKwota()
+    {
+        return $this->kwota;
+    }
+
+    /**
+     * Set samorzad
+     *
+     * @param \AppBundle\Entity\Samorzad $samorzad
+     * @return Umowa
+     */
+    public function setSamorzad(\AppBundle\Entity\Samorzad $samorzad = null)
+    {
+        $this->samorzad = $samorzad;
+
+        return $this;
+    }
+
+    /**
+     * Get samorzad
+     *
+     * @return \AppBundle\Entity\Samorzad 
+     */
+    public function getSamorzad()
+    {
+        return $this->samorzad;
     }
 }

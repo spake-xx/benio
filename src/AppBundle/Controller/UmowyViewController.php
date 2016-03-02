@@ -9,13 +9,29 @@ use Symfony\Component\HttpFoundation\Request;
 class UmowyViewController extends Controller
 {
     /**
-     * @Route("/view", name="view_umowy")
+     * @Route("/umowy/all", name="view_wszystkie")
      */
-    public function ViewAction(Request $request){
+    public function wszystkieUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $umowy_repo = $em->getRepository('AppBundle:Umowa');
 
         $umowy = $umowy_repo->findAll();
+
+        return $this->render('user/view_umowy.html.twig', array(
+            'umowy'=>$umowy,
+        ));
+    }
+
+    /**
+     * @Route("/umowy", name="view_moje")
+     */
+    public function mojeUmowyAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $umowy_repo = $em->getRepository('AppBundle:Umowa');
+
+        $umowy = $umowy_repo->findBySamorzad($user->getSamorzad());
 
         return $this->render('user/view_umowy.html.twig', array(
             'umowy'=>$umowy,

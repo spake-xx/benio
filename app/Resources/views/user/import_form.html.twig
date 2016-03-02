@@ -3,8 +3,28 @@
 {% block body %}
     {% for m in app.session.flashbag.get('notice') %}
     <div class="alert alert-success">{{ m }}</div>
-    {% endfor %}
-Import danych.
+    {% endfor %}<br />
+    {{ form(form) }}
+    <table class="table">
+        <thead>
+        <tr>
+            {% for krotka in headers %}
+            <th class="text-center">{{ krotka }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+            {% for linia in data %}
+            <tr class="info text-center">
+                {% for krotka in linia %}
+                    <td>{{ krotka }}</td>
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block stylesheets %}
