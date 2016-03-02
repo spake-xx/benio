@@ -3,7 +3,7 @@ body {
 
     font-family: "Ubuntu";
     //background-color: #fbffe5;
-    background-image: url(https://unsplash.com/photos/ilSnKT1IMxE/download);
+    background-image: url('../images/bg.jpg');
     background-size:100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
