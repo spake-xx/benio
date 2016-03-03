@@ -58,10 +58,18 @@
             <div class="panel panel-user">
                 <div class="panel-heading">
                     Nazwa usera -> umowy
-                    <hr>
                 </div>
                 <div class="panel-body">
-                    {{ umowy }}
+                    <table>
+                        <tr>
+                            <th>Kwota</th>
+                        </tr>
+                        <tr>
+                            {% for i in umowy %}
+                            <td>{{ i.pkd }}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
