@@ -22,7 +22,7 @@
         </ul>
     </div>
 </nav>
-<div class="con container">
+<div class="con ">
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-user">
@@ -62,13 +62,21 @@
                 <div class="panel-body">
                     <table>
                         <tr>
+                            <th>Podmiot</th>
+                            <th>Zadanie</th>
+                            <th>PKD</th>
+                            <th>Uwagi</th>
                             <th>Kwota</th>
                         </tr>
-                        <tr>
                             {% for i in umowy %}
-                            <td>{{ i.pkd }}</td>
+                                <tr>
+                                    <td>{{ i.podmiot }}</td>
+                                    <td>{{ i.zadanie }}</td>
+                                    <td>{{ i.pkd }}</td>
+                                    <td>{{ i.uwagi }}</td>
+                                    <td>{{ i.kwota }}</td>
+                                </tr>
                             {% endfor %}
-                        </tr>
                     </table>
                 </div>
             </div>
