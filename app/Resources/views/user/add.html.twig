@@ -1,12 +1,24 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     {% for m in app.session.flashbag.get('notice') %}
     <div class="alert alert-success">{{ m }}</div>
     {% endfor %}
-{{ form(form) }}
-{% endblock %}
-
-{% block stylesheets %}
+{{form_start(form)}}
+<div class=''>
+{{ form_widget(form.kwota) }}
+</div>
+<div>
+{{ form_widget(form.pkd) }}
+</div>
+<div>
+{{ form_widget(form.zadanie) }}
+</div>
+<div>
+{{ form_widget(form.podmiot) }}
+</div>
+<div>
+{{ form_widget(form.uwagi) }}
+</div>
+{{form_end(form)}}
 
 {% endblock %}
