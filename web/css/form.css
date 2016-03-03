@@ -3,7 +3,7 @@ body {
 
   font-family: "Ubuntu";
 //background-color: #fbffe5;
-  background-image: url('../images/bg.jpg');
+//background-image: url('../images/bg.jpg');
   background-size:100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -194,4 +194,10 @@ body {
 .btn-own:hover {
   background-color: #f97e09;
   color:#FFFFFF;
+}
+
+.form-add
+{
+  margin-top: 10px;
+  margin-bottom: 10px;  
 }
