@@ -188,3 +188,10 @@ body {
 .table-umowy td {
     font-size:0.8em;
 }
+.btn-own {
+    color: #f97e09;
+}
+.btn-own:hover {
+    background-color: #f97e09;
+    color:#FFFFFF;
+}
