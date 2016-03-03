@@ -182,7 +182,7 @@ body {
     transition: all 0.1s linear;
 }
 .con {
-    padding: 20px;
+    //padding: 20px;
     min-height: 100%;
 }
 .table-umowy td {
