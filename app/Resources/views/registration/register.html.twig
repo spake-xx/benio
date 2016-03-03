@@ -14,21 +14,39 @@
     {% endfor %}
     {{form_start(form)}}
         <div class='form'>
-            <div class="form-group col-md-6">
-                {{ form_widget(form.email, { 'attr': {'placeholder': 'email'} }) }}
+            {{ form_errors(form.email) }}
+            {{ form_errors(form.username) }}
+            {{ form_errors(form.plainPassword.first) }}
+            {{ form_errors(form.plainPassword.second) }}
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        {{ form_widget(form.username, { 'attr': {'placeholder': 'nazwa użytkownika'} }) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    {{ form_widget(form.email, { 'attr': {'placeholder': 'email'} }) }}
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                {{ form_widget(form.username, { 'attr': {'placeholder': 'nazwa użytkownika'} }) }}
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="col-md-6">
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'hasło'} }) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'powtórz hasło'} }) }}
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'nazwa użytkownika'} }) }}
-                {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'nazwa użytkownika'} }) }}
-            </div>
-            <div class="form-group col-md-12">
-                {{ form_widget(form.samorzad) }}
-            </div>
-            <div class="col-md-12">
-                <input type="submit" class="btn" value="{{ 'registration.submit'|trans }}" />
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div class="col-md-12 form-group">
+                        {{ form_widget(form.samorzad) }}
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="{{ 'registration.submit'|trans }}" />
+                    </div>
+                </div>
             </div>
         </div>
     {{form_end(form)}}
