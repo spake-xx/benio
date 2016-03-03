@@ -1,8 +1,56 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {#{% render controller("FOSUserBundle:Security:login") %}#}
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-<div>
-    <input type="submit" class="btn" value="{{ 'registration.submit'|trans }}" />
-</div>
-{{ form_end(form) }}
+{#{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}#}
+    {#{{ form_widget(form) }}#}
+{#<div>#}
+    {#<input type="submit" class="btn" value="{{ 'registration.submit'|trans }}" />#}
+{#</div>#}
+{#{{ form_end(form) }}#}
+{#{% extends 'base.html.twig' %}#}
+{% block body %}
+
+    {% for m in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">{{ m }}</div>
+    {% endfor %}
+    {{form_start(form)}}
+        <div class='form'>
+            <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.email, { 'attr': {'placeholder': 'email'} }) }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_errors(form.email) }}
+            </div>
+                </div>
+            <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.username, { 'attr': {'placeholder': 'nazwa użytkownika'} }) }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_errors(form.username) }}
+            </div>
+                </div>
+            <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'hasło'} }) }}
+                {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'powtórz hasło'} }) }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.second) }}
+            </div>
+                </div>
+            <div class="row">
+            <div class="form-group col-md-12">
+                {{ form_widget(form.samorzad) }}
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn" value="{{ 'registration.submit'|trans }}" />
+            </div>
+            </div>
+        </div>
+    {{form_end(form)}}
+
+{% endblock %}

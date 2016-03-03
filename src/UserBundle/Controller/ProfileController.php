@@ -14,13 +14,24 @@ class ProfileController extends BaseController
     public function showAction()
     {
         $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+        $samorzad = $user->getSamorzad();
+        $repo = $em->getRepository('AppBundle:Umowa');
+        $qb = $repo->createQueryBuilder('u');
+        $query = $qb->where('u.samorzad='.$samorzad->getKod())->setMaxResults(10)->orderBy('u.id', 'DESC')->getQuery();
+        $umowy = $query->getResult();
+
+
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
+
+
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
-            'umowy' => 'hehe'
+            'umowy' => $umowy
         ));
     }
 
