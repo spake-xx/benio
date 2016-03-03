@@ -3,7 +3,7 @@ body {
 
   font-family: "Ubuntu";
 //background-color: #fbffe5;
-  background-image: url('../images/bg.jpg');
+//background-image: url('../images/bg.jpg');
   background-size:100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -199,5 +199,5 @@ body {
 .form-add
 {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 }
