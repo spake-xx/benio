@@ -31,7 +31,7 @@ class ProfileController extends BaseController
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'user' => $user,
-            'umowy' => 'hehe'
+            'umowy' => $umowy
         ));
     }
 
