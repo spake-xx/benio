@@ -24,13 +24,13 @@
 </nav>
 <div class="con ">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-user">
                 <div class="text-center panel-heading">
                     Dane
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-stripped table-condensed">
                         <tr>
                             <th>Użytkownik</th>
                             <td>{{ app.user.username }}</td>
@@ -48,19 +48,19 @@
                             <td>{{ app.user.samorzad.ulica }} {{ app.user.samorzad.nrdomu }} {{ app.user.samorzad.kodpocztowy }} {{ app.user.samorzad.miejscowosc }}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{ app.user.samorzad.email }}</td>
+                            <th colspan="2">{{ app.user.samorzad.email }}</th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="panel panel-user">
                 <div class="panel-heading">
-                    Nazwa usera -> umowy
+                    {{ app.user.username }} -> umowy
                 </div>
                 <div class="panel-body">
-                    <table>
+                    <table class="table table-stripped table-hover table-condensed table-umowy">
                         <tr>
                             <th>Podmiot</th>
                             <th>Zadanie</th>
