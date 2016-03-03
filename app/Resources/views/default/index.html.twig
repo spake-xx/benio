@@ -1,62 +1,211 @@
 {% extends 'base.html.twig' %}
+{% block body %}
 {% block content %}
-<div class="con container">
-    <div class="row">
-        <div class="idea col-md-8">
-            <div class="panel">
-                <div class="panel-heading">
-                    <p class="title">Idea Bazyliszka</p>
-                    <hr>
-                </div>
-                <div class="panel-body">
-                    Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.
-                </div>
+<header id="header" role="banner">
+    <div class="container">
+        <div id="navbar" class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"></a>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-login">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="active" id="login-form-link">Login</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" id="register-form-link">Register</a>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            {% render(controller('FOSUserBundle:Security:login')) %}
-                            <form id="register-form" method="post" role="form" style="display: none;">
-                                <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit"  style="opacity:1;" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Rejestruj"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
+                    <li><a href="#portfolio">Idea Bazyliszka</a></li>
+                    <li><a href="#pricing">Dla samorządów</a></li>
+                    {#<li><a href="#pricing">Pricing</a></li>#}
+                    {#<li><a href="#about-us">About Us</a></li>#}
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
+</header><!--/#header-->
 
+<section id="main-slider" class="carousel">
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-content">
+                    <h1>Przetwarzamy umowy publiczne</h1>
+                    <p class="lead">Przetwarzamy umowy publiczne</p>
+                </div>
+            </div>
+        </div><!--/.item-->
+        {#<div class="item">#}
+            {#<div class="container">#}
+                {#<div class="carousel-content">#}
+                    {#<h1>Przeglądaj umowy jednostek samorządowych</h1>#}
+                    {#<p class="lead">Download free but 100% premium quaility twitter Bootstrap based WordPress and HTML themes <br>from shapebootstrap.net</p>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div><!--/.item-->#}
+    </div><!--/.carousel-inner-->
+    <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
+    <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+</section><!--/#main-slider-->
+
+<section id="services">
+    <div class="container">
+        <div class="box first">
+            <div class="row">
+            </div><!--/.row-->
+        </div><!--/.box-->
+    </div><!--/.container-->
+</section><!--/#services-->
+
+<section id="portfolio">
+    <div class="container">
+        <div class="box">
+            <div class="center gap">
+                <h2>Idea Bazyliszka</h2>
+                <p class="lead">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in neque elit. Pellentesque at felis tincidunt, malesuada urna a, sagittis tellus. Donec vehicula quam vitae placerat maximus. Nullam dictum pretium quam id sollicitudin. Proin sagittis, quam sed imperdiet tincidunt, mi mi ullamcorper odio, sit amet viverra ligula arcu et orci. Aenean ullamcorper nisi a diam venenatis, in varius nunc hendrerit. Duis interdum elementum nunc quis porttitor. Aenean vel ultrices lacus. Curabitur a nunc nibh. Mauris eu justo non nunc mollis feugiat. Fusce varius porttitor nisi in viverra. Nam porta enim eu justo vehicula, non vestibulum turpis porttitor. Nam eget erat nec nisi consectetur iaculis mattis vitae sem. Maecenas sit amet mauris quis erat blandit bibendum. Proin euismod ac nisl et ultricies. Integer lectus libero, dictum eu tristique in, venenatis vel tortor.
+
+                    Aenean dui nisi, pulvinar vitae auctor eu, imperdiet eu sapien. Donec molestie dui quis interdum tempus. Sed dignissim felis odio, id tempus massa convallis rutrum. Quisque hendrerit risus dui, non ultricies arcu congue eget. Aliquam faucibus mattis fringilla. Aenean vel venenatis neque. Mauris quis turpis ac ipsum gravida dictum a eget urna. Vestibulum pellentesque dolor in quam interdum, ac convallis turpis euismod.
+
+                    Mauris at dolor pharetra, blandit urna ac, tristique nulla. Quisque nec velit eleifend nisl porttitor porta. Sed at justo orci. Nullam tempus, felis id tristique faucibus, ipsum odio sagittis arcu, sit amet feugiat justo arcu eu eros. Etiam ornare euismod felis ut sodales. Duis consectetur imperdiet ultrices. Aliquam quis metus eu lectus pulvinar ultrices id eget purus. Ut et ultricies dolor. Etiam eget pulvinar nibh, non molestie est. Cras placerat metus nec ante ullamcorper porttitor. Praesent tincidunt leo eu nunc sagittis pretium. Nam bibendum laoreet elit. Vestibulum ut consequat sem. Curabitur vehicula tincidunt urna in tincidunt. Nullam luctus urna non convallis feugiat.
+
+
+                </p>
+            </div><!--/.center-->
+        </div><!--/.box-->
+    </div><!--/.container-->
+</section><!--/#portfolio-->
+
+<section id="pricing">
+    <div class="container">
+        <div class="box">
+            <div class="center">
+                <h2>Dla samorządów</h2>
+                <p class="lead">Samorządy mogą same wprowadzać umowy do naszej bazy danych. Zaloguj się, lub zarejestruj.</p>
+            </div><!--/.center-->
+            <div class="big-gap"></div>
+            <div id="pricing-table" class="row">
+                <div class="col-sm-6">
+                    <ul class="plan">
+                        <li class="plan-name">Zaloguj się</li>
+                        {#<li class="plan-price">$29</li>#}
+                        {#<li>5GB Storage</li>#}
+                        {#<li>1GB RAM</li>#}
+                        {#<li>400GB Bandwidth</li>#}
+                        {#<li>10 Email Address</li>#}
+                        {#<li>Forum Support</li>#}
+                        {#<li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>#}
+                        {% render url('fos_user_security_login') %}
+                    </ul>
+                </div><!--/.col-sm-4-->
+                <div class="col-sm-6">
+                    <ul class="plan">
+                        <li class="plan-name">Rejestracja</li>
+                        {#<li class="plan-price">$199</li>#}
+                        {#<li>30GB Storage</li>#}
+                        {#<li>5GB RAM</li>#}
+                        {#<li>5TB Bandwidth</li>#}
+                        {#<li>1000 Email Address</li>#}
+                        {#<li>Forum Support</li>#}
+                        {#<li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>#}
+                        {% render url('fos_user_registration_register') %}
+
+                    </ul>
+                </div><!--/.col-sm-4-->
+            </div>
+        </div>
+    </div>
+</section><!--/#pricing-->
+
+<section id="contact">
+    <div class="container">
+        <div class="box last">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Contact Form</h1>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php" role="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Email address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-danger btn-lg">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--/.col-sm-6-->
+                <div class="col-sm-6">
+                    <h1>Our Address</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Twitter, Inc.</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Twitter, Inc.</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+                        </div>
+                    </div>
+                    <h1>Connect with us</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
+                                <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
+                                <li><a href="#"><i class="icon-pinterest icon-social"></i> Pinterest</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-linkedin icon-social"></i> Linkedin</a></li>
+                                <li><a href="#"><i class="icon-twitter icon-social"></i> Twitter</a></li>
+                                <li><a href="#"><i class="icon-youtube icon-social"></i> Youtube</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--/.col-sm-6-->
+            </div><!--/.row-->
+        </div><!--/.box-->
+    </div><!--/.container-->
+</section><!--/#contact-->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+            </div>
+            <div class="col-sm-6">
+                <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">
+            </div>
+        </div>
+    </div>
+</footer><!--/#footer-->
+{% endblock %}
 {% endblock %}
