@@ -358,6 +358,13 @@ a:focus {
 #services .row > div {
   margin-bottom: 50px;
 }
+#panel .box {
+  padding-top: 80px;
+  padding-bottom: 0;
+}
+#panel .row > div {
+  margin-bottom: 50px;
+}
 .center {
   text-align: center;
 }
