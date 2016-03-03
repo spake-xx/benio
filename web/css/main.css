@@ -185,3 +185,6 @@ body {
     padding: 20px;
     min-height: 100%;
 }
+.table-umowy td {
+    font-size:0.8em;
+}

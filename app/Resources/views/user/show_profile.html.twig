@@ -15,22 +15,23 @@
                     <li><a href="#">Pobierz wzór</a></li>
                 </ul>
             </li>
+            <li><a href="{{ path('umowy_export') }}">Export moich umów</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
             <li class="active"><a href="#">{{ 'profile.show.username'|trans }}: {{ user.username }}</a></li>
-            <li><a href="#">Wyloguj</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
         </ul>
     </div>
 </nav>
-<div class="con container">
+<div class="con ">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-user">
                 <div class="text-center panel-heading">
                     Dane
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-stripped table-condensed">
                         <tr>
                             <th>Użytkownik</th>
                             <td>{{ app.user.username }}</td>
@@ -48,22 +49,36 @@
                             <td>{{ app.user.samorzad.ulica }} {{ app.user.samorzad.nrdomu }} {{ app.user.samorzad.kodpocztowy }} {{ app.user.samorzad.miejscowosc }}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{ app.user.samorzad.email }}</td>
+                            <th colspan="2">{{ app.user.samorzad.email }}</th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="panel panel-user">
                 <div class="panel-heading">
-                    Nazwa usera -> umowy
-                    <hr>
+                    {{ app.user.username }} -> umowy
                 </div>
                 <div class="panel-body">
-                    {% for u in umowy %}
-                    {{ u.pkd }}
-                    {% endfor %}
+                    <table class="table table-stripped table-hover table-condensed table-umowy">
+                        <tr>
+                            <th>Podmiot</th>
+                            <th>Zadanie</th>
+                            <th>PKD</th>
+                            <th>Uwagi</th>
+                            <th>Kwota</th>
+                        </tr>
+                            {% for i in umowy %}
+                                <tr>
+                                    <td>{{ i.podmiot }}</td>
+                                    <td>{{ i.zadanie }}</td>
+                                    <td>{{ i.pkd }}</td>
+                                    <td>{{ i.uwagi }}</td>
+                                    <td>{{ i.kwota }}</td>
+                                </tr>
+                            {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
