@@ -19,7 +19,7 @@ class ProfileController extends BaseController
         $samorzad = $user->getSamorzad();
         $repo = $em->getRepository('AppBundle:Umowa');
         $qb = $repo->createQueryBuilder('u');
-        $query = $qb->where('u.samorzad='.$samorzad->getKod())->setMaxgetQuery();
+        $query = $qb->where('u.samorzad='.$samorzad->getKod())->setMaxResults(10)->orderBy('u.id', 'DESC')->getQuery();
         $umowy = $query->getResult();
 
 
