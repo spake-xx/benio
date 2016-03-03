@@ -8,7 +8,7 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6 {#f3f3f3
   color: #777;
   font-weight: 300;
 }
@@ -632,11 +632,3 @@ textarea#message {
     opacity: 1;
     -o-transform: scale(1);
   }
-}
-.btn-own {
-    color: #f97e09;
-}
-.btn-own:hover {
-    background-color: #f97e09;
-    color:#FFFFFF;
-}
