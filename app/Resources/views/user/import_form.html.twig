@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
-
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+    {% endblock %}
 {% block body %}
     {% for m in app.session.flashbag.get('notice') %}
     <div class="alert alert-success">{{ m }}</div>
@@ -8,7 +14,7 @@
     {#{{ form(form) }}#}
     {{ form_start(form) }}
     {{ form_widget(form.attachment) }}
-    <input type="submit" class="btn btn-lg btn-primary" value="{{ 'Submit' }}" name="form.submit"/>
+    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary btn-lg'} }) }}
     {{ form_end(form) }}
     <h2>Cyka</h2>
     <table class="table">
@@ -33,6 +39,3 @@
     </table>
 {% endblock %}
 
-{% block stylesheets %}
-
-{% endblock %}
