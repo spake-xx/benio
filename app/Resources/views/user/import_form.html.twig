@@ -4,7 +4,13 @@
     {% for m in app.session.flashbag.get('notice') %}
     <div class="alert alert-success">{{ m }}</div>
     {% endfor %}<br />
-    {{ form(form) }}
+    <h1>Cyka</h1>
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+    {{ form_widget(form.attachment) }}
+    <input type="submit" class="btn btn-lg btn-primary" value="{{ 'Submit' }}" name="form.submit"/>
+    {{ form_end(form) }}
+    <h2>Cyka</h2>
     <table class="table">
         <thead>
         <tr>
