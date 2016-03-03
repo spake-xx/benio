@@ -7,11 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Ddeboer\DataImport\Reader;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class CSVController extends Controller
 {
+    private $pola = array('podmiot', 'zadanie', 'pkd', 'uwagi', 'kwota');
+
     /**
      * @Route("/umowy/import", name="umowy_import")
      */
@@ -41,7 +46,7 @@ class CSVController extends Controller
             $error = null;
 
             $headers = str_getcsv($headers, ",", '"');
-            $pola = array('podmiot', 'zadanie', 'pkd', 'uwagi', 'kwota');
+            $pola = $this->pola;
             foreach($pola as $k=>$p){
                 if($headers[$k]!=$p){
                     $this->addFlash('warning', "Zła kolejność kolumn w pliku CSV !");
@@ -80,4 +85,63 @@ class CSVController extends Controller
             'data'=>$Data,
         ));
     }
+
+    /**
+     * @Route("/umowy/export", name="umowy_export")
+     */
+    public function umowyExportAction(){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('AppBundle:Umowa');
+        $samorzad = $this->getUser()->getSamorzad();
+        $umowy = $repo->findBySamorzad($samorzad);
+        $filename = "csv/".$samorzad->getKod().".csv";
+        $file = fopen($filename, "wb");
+
+        $i = 0;
+        $string = '"';
+        $separator = ",";
+        foreach($umowy as $u){
+            if($i==0){
+                foreach($this->pola as $pole){
+                    fwrite($file, $string.$pole.$string);
+                    if($pole!=end($this->pola)){
+                        fwrite($file, ',');
+                    }else{
+                        fwrite($file, "\n");
+                    }
+                }
+            }
+
+            fwrite($file, $string.$u->getPodmiot().$string.$separator);
+            fwrite($file, $string.$u->getZadanie().$string.$separator);
+            fwrite($file, $string.$u->getPkd().$string.$separator);
+            fwrite($file, $string.$u->getUwagi().$string.$separator);
+            fwrite($file, $string.$u->getKwota().$string.$separator);
+            fwrite($file, "\n");
+
+
+
+
+
+            $i++;
+        }
+        fclose($file);
+
+
+        $response = new Response();
+
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($filename));
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($filename) . '";');
+        $response->headers->set('Content-length', filesize($filename));
+
+        $response->sendHeaders();
+
+        $response->setContent(file_get_contents($filename));
+
+
+        return $response;
+    }
+
+
 }

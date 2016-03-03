@@ -18,7 +18,7 @@
         </ul>
         <ul class="nav navbar-nav pull-right">
             <li class="active"><a href="#">{{ 'profile.show.username'|trans }}: {{ user.username }}</a></li>
-            <li><a href="#">Wyloguj</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
         </ul>
     </div>
 </nav>
@@ -57,7 +57,8 @@
         <div class="col-md-9">
             <div class="panel panel-user">
                 <div class="panel-heading">
-                    {{ app.user.username }} -> umowy
+                    {{ app.user.samorzad.samorzad }} - umowy
+                    <a class="btn btn-default btn-own pull-right" href="{{ path('umowy_export') }}">Export moich umów</a>
                 </div>
                 <div class="panel-body">
                     <table class="table table-stripped table-hover table-condensed table-umowy">
