@@ -633,3 +633,10 @@ textarea#message {
     -o-transform: scale(1);
   }
 }
+.btn-own {
+    color: #f97e09;
+}
+.btn-own:hover {
+    background-color: #f97e09;
+    color:#FFFFFF;
+}
