@@ -15,10 +15,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
-                    <li><a href="#portfolio">Umowy</a></li>
+                    <li><a href="umowy/">Umowy</a></li>
                     <li><a href="#pricing">Dla samorządów</a></li>
-                    {#<li><a href="#pricing">Pricing</a></li>#}
-                    {#<li><a href="#about-us">About Us</a></li>#}
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
             </div>
@@ -30,22 +28,18 @@
         <div class="box first">
             <div class="row">
             </div><!--/.row-->
-		<div id='navbar'>
-		<ul>
-		   <li class='active'><a href='#'><span>Home</span></a></li>
-		   <li><a href='#'><span>Products</span></a></li>
-		   <li><a href='#'><span>Company</span></a></li>
-		   <li class='last'><a href='#'><span>Contact</span></a></li>
-		</ul>
-		</div>
+        </div>
+    </div>
+</section>
 
-            
-<div class="con container-fluid">
+<section id="panel">
+    <div class="container">
+        <div class="box">
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-user">
                 <div class="text-center panel-heading">
-                    Dane
+                    <div class="row text-left"><h3><div style="float: left; color: cyan;">|</div>  Dane</h3><br /></div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-stripped table-condensed">
@@ -75,7 +69,7 @@
         <div class="col-md-9">
             <div class="panel panel-user">
                 <div class="panel-heading">
-                    {{ app.user.samorzad.samorzad }} - umowy
+                    <div class="row text-left"><h3><div style="float: left; color: cyan;">|</div>  Umowy samorządu {{ app.user.samorzad.samorzad }} </h3><br /></div>
                     <a class="btn btn-default btn-own pull-right" href="{{ path('umowy_export') }}">Export moich umów</a>
                 </div>
                 <div class="panel-body">
@@ -101,6 +95,8 @@
             </div>
         </div>
     </div>
+            </div>
+        </div>
 </div>
         </div><!--/.box-->
     </div><!--/.container-->
