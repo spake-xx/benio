@@ -33,7 +33,9 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('UserBundle:User');
         $qb = $repo->createQueryBuilder('u');
-        $query = $qb->getQuery();
+        $query = $qb
+            ->innerJoin('u.samorzad', 's')
+            ->getQuery();
 
         $paginator = $this->get('knp_paginator');
         $users = $paginator->paginate(
@@ -71,7 +73,7 @@ class AdminController extends Controller
             $em->flush();
         }
 
-        return $this->render('admin/users.html.twig', array(
+        return $this->render('form.html.twig', array(
             'form'=>$form->createView(),
         ));
     }

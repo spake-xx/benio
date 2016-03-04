@@ -21,7 +21,7 @@
                             {{ knp_pagination_sortable(users, 'Login', 'u.username') }}
                         </th>
                         <th>{{ knp_pagination_sortable(users, 'Email', 'u.email') }}</th>
-                        <th>{{ knp_pagination_sortable(users, 'Samorząd', 'u.samorzad.samorzad') }}</th>
+                        <th>{{ knp_pagination_sortable(users, 'Samorząd', 's.samorzad') }}</th>
                         <th>Wyłącz</th>
                     </tr>
                     {% for i in users %}
