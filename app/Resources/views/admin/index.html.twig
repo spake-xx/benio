@@ -4,6 +4,7 @@
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
+    {% include "admin/navbar_admin.html.twig" %}
 <div class="container">
     <div class="panel">
         <div class="panel-heading">
@@ -21,7 +22,7 @@
                     <tr>
                         <td>{{ i.username }}</td>
                         <td>{{ i.email }}</td>
-                        <td>{{ i.samorzad }}</td>
+                        <td>{{ i.samorzad.samorzad }}</td>
                         <td><a href="#">Akceptuj</a></td>
                     </tr>
                 {% endfor %}
