@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    {% include "admin/navbar_admin.html.twig" %}
+    <div class="container" style="padding-top:78px">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3><div style="float: left; color: cyan;">|</div> Użytkownicy</h3>
+            </div>
+            <div class="panel-body">
+                {% for m in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-success">{{ m }}</div>
+                {% endfor %}
+
+                <table class="table table-stripped table-hover table-condensed">
+                    <tr>
+                        <th>Login</th>
+                        <th>Email</th>
+                        <th>Samorząd</th>
+                        <th>Wyłącz</th>
+                    </tr>
+                    {% for i in users %}
+                        <tr>
+                            <td>{{ i.username }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.samorzad.samorzad }}</td>
+                            <td><a href="{{  path('admin_user_edytuj', {"id":i.id }) }}">Edytuj</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(umowy) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
