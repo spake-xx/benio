@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block body %}
+{% block content %}
 
     {% for m in app.session.flashbag.get('notice') %}
         <div class="alert alert-success">{{ m }}</div>
