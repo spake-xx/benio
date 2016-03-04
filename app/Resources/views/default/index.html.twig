@@ -84,8 +84,8 @@ In hac habitasse platea dictumst. Ut non mollis purus. In vehicula felis sed sap
                         {#<li>Forum Support</li>#}
                         {#<li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>#}
                         {#{% render url('fos_user_registration_register') %}#}
-                        {{ render(controller('FOSUserBundle:Registration:register')) }}
-                        {#{% render url('fos_user_registration_register') %}#}
+
+                        {% render url('fos_user_registration_register') %}
 
                     </ul>
                 </div><!--/.col-sm-4-->
