@@ -1,8 +1,5 @@
-{% if mainPage is not defined %}
 {% extends "FOSUserBundle::layout.html.twig" %}
-{% endif %}
 
 {% block fos_user_content %}
-        {{ app.request.get('name') }}
 {% include "registration/register.html.twig" %}
 {% endblock fos_user_content %}
