@@ -7,14 +7,24 @@
         <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     {% endblock %}
 {% block body %}
+    {% include "user/navbar_user.html.twig" %}
     {% for m in app.session.flashbag.get('notice') %}
     <div class="alert alert-success">{{ m }}</div>
     {% endfor %}<br />
+<div class="container" style="padding-top:78px">
+    <div class="panel">
+       <div class="panel-heading">
+           <h3><div style="float: left; color: cyan;">|</div>  Import
+               </h3>
+
+       </div>
+       <div class="panel-body">
     <h1>Cyka</h1>
     {#{{ form(form) }}#}
     {{ form_start(form) }}
     {{ form_widget(form.attachment) }}
-    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary btn-lg'} }) }}
+    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary btn-lg'},  'label': 'Importuj' }) }}
+           {#<input type="submit" class="btn btn-primary btn-lg btn-block" value="import" name="{{ form.submit }}" />#}
     {{ form_end(form) }}
     <h2>Cyka</h2>
     <table class="table">
@@ -37,5 +47,8 @@
 
         </tbody>
     </table>
+</div>
+        </div>
+    </div>
 {% endblock %}
 

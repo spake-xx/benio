@@ -11,34 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DodawanieController extends Controller
 {
-    /**
-     * @Route("/admin/umowy/dodaj", name="umowa_admin")
-     */
-    function NowaUmowaAdminAction(Request $request){
-        $umowa = new Umowa();
-        $em = $this->getDoctrine()->getManager();
-
-        $form = $this->getAddForm($umowa, true);
-
-        $form->handleRequest($request);
-
-        if($form->isValid()){
-            $em->persist($umowa);
-            $em->flush();
-            $samorzad = $umowa->getSamorzad();
-            unset($umowa);
-            $umowa = new Umowa();
-            $umowa->setSamorzad($samorzad);
-            unset($form);
-            $form = $this->getAddForm($umowa);
-
-            $this->addFlash('notice', 'Pomyślnie dodano umowę do bazy danych');
-        }
-
-        return $this->render('admin/add.html.twig', array(
-            'form'=>$form->createView(),
-        ));
-    }
 
     /**
      * @Route("/umowy/dodaj", name="umowa_gmina")
