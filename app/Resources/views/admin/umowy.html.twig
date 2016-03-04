@@ -42,6 +42,12 @@
                                 <th>
                                     {{ knp_pagination_sortable(umowy, 'Samorząd', 's.samorzad') }}
                                 </th>
+                                <th>
+                                    Edytuj
+                                </th>
+                                <th>
+                                    Usuń
+                                </th>
                             </tr>
                             {% for i in umowy %}
                                 <tr>
@@ -51,6 +57,8 @@
                                     <td>{{ i.uwagi }}</td>
                                     <td>{{ i.kwota }}</td>
                                     <td>{{ i.samorzad.samorzad }}</td>
+                                    <td><a href="{{ path('admin_umowa_edytuj', {'id':i.id}) }}">Edytuj</a></td>
+                                    <td><a href="{{ path('admin_umowa_usun', {'id':i.id}) }}">Usuń</a></td>
                                 </tr>
                             {% endfor %}
                         </table>
