@@ -5,12 +5,16 @@
 {% endblock %}
 {% block body %}
     {% include "admin/navbar_admin.html.twig" %}
-<div class="container">
+<div class="container" style="padding-top:78px">
     <div class="panel">
         <div class="panel-heading">
             <h3><div style="float: left; color: cyan;">|</div> Użytkownicy do akceptacji</h3>
         </div>
         <div class="panel-body">
+            {% for m in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">{{ m }}</div>
+            {% endfor %}
+
             <table class="table table-stripped table-hover table-condensed">
                 <tr>
                     <th>Login</th>
@@ -23,7 +27,7 @@
                         <td>{{ i.username }}</td>
                         <td>{{ i.email }}</td>
                         <td>{{ i.samorzad.samorzad }}</td>
-                        <td><a href="#">Akceptuj</a></td>
+                        <td><a href="{{  path('admin_user_accept', {"id":i.id }) }}">Akceptuj</a></td>
                     </tr>
                 {% endfor %}
             </table>
