@@ -54,7 +54,7 @@ class AdminController extends Controller
      */
     function EdytujUserAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('AppBundle:User');
+        $repo = $em->getRepository('UserBundle:User');
         $user = $repo->find($id);
 
         $form = $this->createFormBuilder($user)
@@ -73,7 +73,7 @@ class AdminController extends Controller
             $em->flush();
         }
 
-        return $this->render('form.html.twig', array(
+        return $this->render('admin/user_edit.html.twig', array(
             'form'=>$form->createView(),
         ));
     }
