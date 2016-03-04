@@ -76,7 +76,16 @@ In hac habitasse platea dictumst. Ut non mollis purus. In vehicula felis sed sap
                 <div class="col-sm-6">
                     <ul class="plan">
                         <li class="plan-name">Rejestracja</li>
-                        {% render url('fos_user_registration_register') %}
+                        {#<li class="plan-price">$199</li>#}
+                        {#<li>30GB Storage</li>#}
+                        {#<li>5GB RAM</li>#}
+                        {#<li>5TB Bandwidth</li>#}
+                        {#<li>1000 Email Address</li>#}
+                        {#<li>Forum Support</li>#}
+                        {#<li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>#}
+                        {#{% render url('fos_user_registration_register') %}#}
+                        {{ render(controller('FOSUserBundle:Registration:register')) }}
+                        {#{% render url('fos_user_registration_register') %}#}
 
                     </ul>
                 </div><!--/.col-sm-4-->
