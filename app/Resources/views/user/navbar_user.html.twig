@@ -15,9 +15,16 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path('view_moje') }}/">Moje umowy</a></li>
-                    <li>SKIS</li>
-                    <li><a href="{{ path ('homepage') }}">Kontakt</a></li>
+                    <li><a href="{{ path('view_moje') }}">Moje umowy</a></li>
+                    <li>
+                        <div class="dropdown">
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pierwsza opcj</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Druga opcja</a></li>
+                          </ul>
+                        </div>
+                    </li>
+                    <li><a href="{{path('homepage')}}">Kontakt</a></li>
                 </ul>
             </div>
         </div>
