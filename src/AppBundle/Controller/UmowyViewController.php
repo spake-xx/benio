@@ -14,9 +14,15 @@ class UmowyViewController extends Controller
     public function wszystkieUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $umowy_repo = $em->getRepository('AppBundle:Umowa');
+        $qb = $umowy_repo->createQueryBuilder('u');
+        $query = $qb->getQuery();
 
-        $umowy = $umowy_repo->findAll();
-
+        $paginator  = $this->get('knp_paginator');
+        $umowy = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
         return $this->render('default/view_umowy_all.html.twig', array(
             'umowy'=>$umowy,
         ));
