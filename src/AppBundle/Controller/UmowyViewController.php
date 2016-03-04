@@ -24,10 +24,8 @@ class UmowyViewController extends Controller
             $request->query->getInt('page', 1),
             10
         );
-
-        return $this->render('user/view_umowy.html.twig', array(
-//            'umowy'=>$umowy,
-            'pagination'=>$pagination,
+        return $this->render('default/view_umowy_all.html.twig', array(
+            'umowy'=>$umowy,
         ));
     }
 
