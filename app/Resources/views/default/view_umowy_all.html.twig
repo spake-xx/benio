@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="panel panel-user">
                 <div class="panel-heading">
-                    <div><h3><div style="float: left; color: cyan;">|</div>  Wszystkie umowy
+                    <div><h3><div style="float: left; color: cyan;">|</div>  Wszystkie umowy ({{ umowy.getTotalItemCount }})
                             {#<a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export moich wszystkich umów</a>#}
                             <a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export wszystkich umów</a>
                         </h3>
@@ -18,13 +18,26 @@
 
                 </div>
                 <div class="panel-body">
+                    <div class="count">
+
+                    </div>
                     <table class="table table-stripped table-hover table-condensed table-umowy">
                         <tr>
-                            <th>Podmiot</th>
-                            <th>Zadanie</th>
-                            <th>PKD</th>
-                            <th>Uwagi</th>
-                            <th>Kwota</th>
+                            <th {% if umowy.isSorted('u.id') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(umowy, 'Podmiot', 'u.id') }}
+                            </th>
+                            <th>
+                                {{ knp_pagination_sortable(umowy, 'Zadanie', 'u.zadanie') }}
+                            </th>
+                            <th>
+                                {{ knp_pagination_sortable(umowy, 'PKD', 'u.pkd') }}
+                            </th>
+                            <th>
+                                {{ knp_pagination_sortable(umowy, 'Uwagi', 'u.uwagi') }}
+                            </th>
+                            <th>
+                                {{ knp_pagination_sortable(umowy, 'Kwota', 'u.kwota') }}
+                            </th>
                         </tr>
                         {% for i in umowy %}
                             <tr>
@@ -36,6 +49,9 @@
                             </tr>
                         {% endfor %}
                     </table>
+                    <div class="navigation">
+                        {{ knp_pagination_render(umowy) }}
+                    </div>
                 </div>
             </div>
         </div>

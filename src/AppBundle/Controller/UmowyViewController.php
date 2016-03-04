@@ -18,8 +18,7 @@ class UmowyViewController extends Controller
         $query = $qb->getQuery();
 
         $paginator  = $this->get('knp_paginator');
-//        $umowy = $umowy_repo->findAll();
-        $pagination = $paginator->paginate(
+        $umowy = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
             10
