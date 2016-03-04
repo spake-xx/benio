@@ -21,7 +21,7 @@
                     <li class="{% if app.request.get('_route') starts with 'view_moje' %} active {% endif %}">
                         <a href="{{ path('view_moje') }}">Moje umowy</a></li>
                     <li>
-                        <a herf="#">Dodaj umowę</a></li>
+                        <a herf="{{ path('umowa_add_choice') }}">Dodaj umowę</a></li>
                 </ul>
             </div>
         </div>
