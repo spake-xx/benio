@@ -15,6 +15,7 @@ class UmowyViewController extends Controller
         $em = $this->getDoctrine()->getManager();
         $umowy_repo = $em->getRepository('AppBundle:Umowa');
         $qb = $umowy_repo->createQueryBuilder('u');
+        $qb->innerJoin('u.samorzad', 's');
         $query = $qb->getQuery();
 
         $paginator  = $this->get('knp_paginator');
@@ -40,6 +41,7 @@ class UmowyViewController extends Controller
 //        $umowy = $umowy_repo->findBySamorzad($user->getSamorzad());
         $qb = $umowy_repo->createQueryBuilder('u');
         $query = $qb->where('u.samorzad='.$user->getSamorzad()->getKod())->getQuery();
+
 
         $paginator = $this->get('knp_paginator');
         $umowy = $paginator->paginate(
