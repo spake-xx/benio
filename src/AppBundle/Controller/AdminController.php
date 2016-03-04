@@ -27,6 +27,23 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/user/accept/{id}", name="admin_user_accept")
+     */
+    function adminUserAcceptAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $user = $repo->find($id);
+        $user->setEnabled(1);
+
+        $em->flush();
+        $this->addFlash('notice', 'Pomyślnie zaakceptowano użytkownika '.$user->getUsername());
+//        return $this->render('admin/index.html.twig', array(
+//            'users'=>$users,
+//        ));
+        return $this->redirectToRoute('admin_index');
+    }
+
+    /**
      * @Route("/admin/umowy/dodaj/", name="umowa_admin")
      */
     function NowaUmowaAdminAction(Request $request){
@@ -127,7 +144,7 @@ class AdminController extends Controller
             ->add('kwota')
             ->add('pkd')
             ->add('uwagi')
-            ->add('Zapisz i wyślij', SubmitType::class)
+            ->add('save', SubmitType::class, array('label'=>'Zapisz'))
             ->getForm();
 
         if($admin){
