@@ -18,7 +18,7 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('UserBundle:User');
         $qb = $repo->createQueryBuilder('u');
-        $query = $qb->where('u.locked=true')->getQuery();
+        $query = $qb->where('u.enabled=0')->getQuery();
         $users = $query->getResult();
 
         return $this->render('admin/index.html.twig', array(
