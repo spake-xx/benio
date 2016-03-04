@@ -17,7 +17,7 @@ class UmowyViewController extends Controller
 
         $umowy = $umowy_repo->findAll();
 
-        return $this->render('user/view_umowy.html.twig', array(
+        return $this->render('default/view_umowy_all.html.twig', array(
             'umowy'=>$umowy,
         ));
     }
