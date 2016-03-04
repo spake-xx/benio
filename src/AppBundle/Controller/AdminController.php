@@ -58,9 +58,22 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/umowa/{id}", name="admin_umowa_usun")
+     * @Route("/admin/umowa/remove/{id}", name="admin_umowa_usun")
      */
     function UsunUmowaAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('AppBundle:Umowa');
+        $umowa = $repo->find($id);
+        $em->remove($umowa);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_umowy_pokaz');
+    }
+
+    /**
+     * @Route("/admin/umowa/edit/{id}", name="admin_umowa_edytuj")
+     */
+    function EdytujUmowaAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('AppBundle:Umowa');
         $umowa = $repo->find($id);
