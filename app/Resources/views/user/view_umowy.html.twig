@@ -3,10 +3,10 @@
     {{ parent() }}
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 {% endblock %}
-{% include "user/navbar_user.html.twig" %}
+
 
 {% block body %}
-
+    {% include "user/navbar_user.html.twig" %}
     {#<table class="table">#}
         {#<thead>#}
         {#<tr>#}
@@ -29,39 +29,41 @@
         {#{% endfor %}#}
         {#</tbody>#}
     {#</table>#}
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-user">
-        <div class="panel-heading">
-            <div><h3><div style="float: left; color: cyan;">|</div>  Wszystkie umowy samorządu {{ app.user.samorzad.samorzad }}
+<div class="container" style="padding-top:78px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-user">
+                <div class="panel-heading">
+                    <div><h3><div style="float: left; color: cyan;">|</div>  Wszystkie umowy samorządu {{ app.user.samorzad.samorzad }}
                     {#<a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export moich wszystkich umów</a>#}
                     <a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export moich umów</a>
-                </h3>
-            </div>
+                    </h3>
+                </div>
 
-        </div>
-        <div class="panel-body">
-            <table class="table table-stripped table-hover table-condensed table-umowy">
-                <tr>
-                    <th>Podmiot</th>
-                    <th>Zadanie</th>
-                    <th>PKD</th>
-                    <th>Uwagi</th>
-                    <th>Kwota</th>
-                </tr>
-                {% for i in umowy %}
+            </div>
+            <div class="panel-body">
+                <table class="table table-stripped table-hover table-condensed table-umowy">
                     <tr>
-                        <td>{{ i.podmiot }}</td>
-                        <td>{{ i.zadanie }}</td>
-                        <td>{{ i.pkd }}</td>
-                        <td>{{ i.uwagi }}</td>
-                        <td>{{ i.kwota }}</td>
+                        <th>Podmiot</th>
+                        <th>Zadanie</th>
+                        <th>PKD</th>
+                        <th>Uwagi</th>
+                        <th>Kwota</th>
                     </tr>
-                {% endfor %}
-            </table>
+                    {% for i in umowy %}
+                        <tr>
+                            <td>{{ i.podmiot }}</td>
+                            <td>{{ i.zadanie }}</td>
+                            <td>{{ i.pkd }}</td>
+                            <td>{{ i.uwagi }}</td>
+                            <td>{{ i.kwota }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
+      </div>
     </div>
-  </div>
 </div>
 {% endblock %}
 
