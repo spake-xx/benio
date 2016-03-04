@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
@@ -42,13 +43,13 @@ class AdminController extends Controller
     function ShowUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('AppBundle:Umowa');
-        $qb = $repo->createQueryBuilder($repo);
+        $qb = $repo->createQueryBuilder('u');
         $query = $qb->getQuery();
 
         $paginator = $this->get('knp_paginator');
         $umowy = $paginator->paginate(
           $query,
-          $request->query->getInt('page', 1),
+          $request->query->getInt('page', 1)
         );
 
         return $this->render('admin/umowy.html.twig', array(
@@ -59,20 +60,13 @@ class AdminController extends Controller
     /**
      * @Route("/admin/umowa/{id}", name="admin_umowa_usun")
      */
-    function ShowUmowyAction(Request $request){
+    function UsunUmowaAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('AppBundle:Umowa');
-        $qb = $repo->createQueryBuilder($repo);
-        $query = $qb->getQuery();
+        $umowa = $repo->find($id);
+        $em->remove($umowa);
+        $em->flush();
 
-        $paginator = $this->get('knp_paginator');
-        $umowy = $paginator->paginate(
-            $query,
-            $request->query->getInt('page', 1),
-        );
-
-        return $this->render('admin/umowy.html.twig', array(
-            'umowy'=>$umowy,
-        ));
+        return $this->redirectToRoute('admin_umowy_pokaz');
     }
 }
