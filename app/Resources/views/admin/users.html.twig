@@ -17,9 +17,11 @@
 
                 <table class="table table-stripped table-hover table-condensed">
                     <tr>
-                        <th>Login</th>
-                        <th>Email</th>
-                        <th>Samorząd</th>
+                        <th {% if users.isSorted('u.id') %} class="sorted"{% endif %}>
+                            {{ knp_pagination_sortable(users, 'Login', 'u.username') }}
+                        </th>
+                        <th>{{ knp_pagination_sortable(users, 'Email', 'u.email') }}</th>
+                        <th>{{ knp_pagination_sortable(users, 'Samorząd', 'u.samorzad.samorzad') }}</th>
                         <th>Wyłącz</th>
                     </tr>
                     {% for i in users %}
@@ -32,7 +34,7 @@
                     {% endfor %}
                 </table>
                 <div class="navigation">
-                    {{ knp_pagination_render(umowy) }}
+                    {{ knp_pagination_render(users) }}
                 </div>
             </div>
         </div>
