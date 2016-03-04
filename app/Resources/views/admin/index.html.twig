@@ -23,7 +23,7 @@
                         <td>{{ i.username }}</td>
                         <td>{{ i.email }}</td>
                         <td>{{ i.samorzad.samorzad }}</td>
-                        <td><a href="#">Akceptuj</a></td>
+                        <td><a href="path {{ "admin_user_accept", "id".i.id }}">Akceptuj</a></td>
                     </tr>
                 {% endfor %}
             </table>
