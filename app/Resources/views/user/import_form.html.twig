@@ -12,43 +12,46 @@
     <div class="alert alert-success">{{ m }}</div>
     {% endfor %}<br />
 <div class="container" style="padding-top:78px">
-    <div class="panel">
+    <div class="panel col-md-12">
        <div class="panel-heading">
-           <h3><div style="float: left; color: cyan;">|</div>  Import
-               </h3>
-
+           <h2><div style="float: left; color: cyan;">|</div>  Import</h2>
        </div>
        <div class="panel-body">
-    <h1>Cyka</h1>
-    {#{{ form(form) }}#}
-    {{ form_start(form) }}
-    {{ form_widget(form.attachment) }}
-    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary btn-lg'},  'label': 'Importuj' }) }}
-           {#<input type="submit" class="btn btn-primary btn-lg btn-block" value="import" name="{{ form.submit }}" />#}
-    {{ form_end(form) }}
-    <h2>Cyka</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            {% for krotka in headers %}
-            <th class="text-center">{{ krotka }}</th>
-            {% endfor %}
-        </tr>
-        </thead>
-        <tbody>
-            {% for linia in data %}
-            <tr class="info text-center">
-                {% for krotka in linia %}
-                    <td>{{ krotka }}</td>
-                {% endfor %}
+            <h3><div style="float: left; color: cyan;">|</div> Instrukcje</h3>
+                   <p>Jakieś teksty</p>
+            <h3><div style="float: left; color: cyan;">|</div> Wzór</h3>
+                   <p>jakiś wzór</p>
+            <h3><div style="float: left; color: cyan;">|</div> Import CSV</h3>
+                <div class="form form-group">
+            {#{{ form(form) }}#}
+            {{ form_start(form) }}
+            {{ form_widget(form.attachment) }}
+            {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary btn-lg'},  'label': 'Importuj' }) }}
+                   {#<input type="submit" class="btn btn-primary btn-lg btn-block" value="import" name="{{ form.submit }}" />#}
+            {{ form_end(form) }}
+                </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    {% for krotka in headers %}
+                    <th class="text-center">{{ krotka }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                    {% for linia in data %}
+                    <tr class="info text-center">
+                        {% for krotka in linia %}
+                            <td>{{ krotka }}</td>
+                        {% endfor %}
 
-            </tr>
-            {% endfor %}
+                    </tr>
+                    {% endfor %}
 
-        </tbody>
-    </table>
-</div>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 {% endblock %}
 
