@@ -27,6 +27,57 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/users", name="admin_users")
+     */
+    function AdminUsersAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $qb = $repo->createQueryBuilder('u');
+        $query = $qb->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $users = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1)
+        );
+
+        return $this->render('admin/users.html.twig', array(
+            'users'=>$users,
+        ));
+    }
+
+
+    /**
+     * @Route("/admin/user/edit/{id}/", name="admin_user_edytuj")
+     */
+    function EdytujUserAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('AppBundle:User');
+        $user = $repo->find($id);
+
+        $form = $this->createFormBuilder($user)
+            ->add('username')
+            ->add('email')
+            ->add('samorzad', EntityType::class, array(
+                'class'=>'AppBundle:Samorzad',
+                'choice_label'=>'samorzad'
+            ))
+            ->add('save', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->addFlash('notice', "Pomyślnie zaktualizowano umowę.");
+            $em->flush();
+        }
+
+        return $this->render('admin/users.html.twig', array(
+            'form'=>$form->createView(),
+        ));
+    }
+
+
+    /**
      * @Route("/admin/user/accept/{id}", name="admin_user_accept")
      */
     function adminUserAcceptAction(Request $request, $id){
