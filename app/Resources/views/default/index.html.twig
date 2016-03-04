@@ -1,32 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% block content %}
-<header id="header" role="banner">
-    <div class="container">
-        <div id="navbar" class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ path('homepage') }}"></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
-                    <li><a href="#portfolio">Idea Bazyliszka</a></li>
-                    <li><a href="#pricing">Dla samorządów</a></li>
-                    <li><a href="#obywatel">Obywatel</a></li>
-                    {#<li><a href="#pricing">Pricing</a></li>#}
-                    {#<li><a href="#about-us">About Us</a></li>#}
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header><!--/#header-->
+{% include "default/navbar_janusz.html.twig" %}
 
 <section id="main-slider" class="carousel">
     <div class="carousel-inner">
@@ -38,14 +13,6 @@
                 </div>
             </div>
         </div><!--/.item-->
-        {#<div class="item">#}
-            {#<div class="container">#}
-                {#<div class="carousel-content">#}
-                    {#<h1>Przeglądaj umowy jednostek samorządowych</h1>#}
-                    {#<p class="lead">Download free but 100% premium quaility twitter Bootstrap based WordPress and HTML themes <br>from shapebootstrap.net</p>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div><!--/.item-->#}
     </div><!--/.carousel-inner-->
     <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
     <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
@@ -60,7 +27,7 @@
     </div><!--/.container-->
 </section><!--/#services-->
 
-<section id="portfolio">
+<section id="idea">
     <div class="container">
         <div class="box">
             <div class="center gap">
@@ -91,7 +58,7 @@ Morbi at molestie elit, varius mollis tortor. Sed iaculis et nisi at blandit. Fu
 In hac habitasse platea dictumst. Ut non mollis purus. In vehicula felis sed sapien pellentesque condimentum. Pellentesque luctus lacus metus, feugiat dignissim lectus cursus a. Suspendisse orci tortor, mattis nec lacus eget, mollis tincidunt arcu. Duis facilisis felis sem, tincidunt porttitor dui vehicula ut. Aenean pretium tortor nibh, vitae tincidunt purus aliquam in. Curabitur mauris felis, venenatis id tortor in, interdum porttitor massa. Mauris dapibus vel est nec scelerisque. Suspendisse dolor libero, iaculis non sem sed, convallis imperdiet sapien. Sed tempus, ex sed viverra euismod, purus ipsum elementum ligula, vitae finibus ligula nibh a leo. Suspendisse dapibus dignissim ante, vel maximus neque congue a. Duis eu maximus neque, et auctor diam. Duis ornare elit arcu, ut pulvinar urna fermentum at. Morbi enim eros, congue ac luctus nec, sodales nec sapien.
     </div>
 </section>
-<section id="pricing">
+<section id="login">
     <div class="container">
         <div class="box">
             <div class="center">
