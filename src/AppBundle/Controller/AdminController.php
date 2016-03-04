@@ -12,6 +12,21 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
+     * @Route("/admin/", name="admin_index")
+     */
+    function adminIndexAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $qb = $repo->createQueryBuilder('u');
+        $query = $qb->where('u.locked=true')->getQuery();
+        $users = $query->getResult();
+
+        return $this->render('admin/index.html.twig', array(
+            'users'=>$users,
+        ));
+    }
+
+    /**
      * @Route("/admin/umowy/dodaj/", name="umowa_admin")
      */
     function NowaUmowaAdminAction(Request $request){
