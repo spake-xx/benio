@@ -2,14 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin/umowy/dodaj", name="umowa_admin")
+     * @Route("/admin/umowy/dodaj/", name="umowa_admin")
      */
     function NowaUmowaAdminAction(Request $request){
         $umowa = new Umowa();
@@ -38,7 +40,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/umowy", name="admin_umowy_pokaz")
+     * @Route("/admin/umowy/", name="admin_umowy_pokaz")
      */
     function ShowUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
@@ -58,7 +60,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/umowa/remove/{id}", name="admin_umowa_usun")
+     * @Route("/admin/umowa/remove/{id}/", name="admin_umowa_usun")
      */
     function UsunUmowaAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
@@ -71,15 +73,54 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/umowa/edit/{id}", name="admin_umowa_edytuj")
+     * @Route("/admin/umowa/edit/{id}/", name="admin_umowa_edytuj")
      */
     function EdytujUmowaAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('AppBundle:Umowa');
         $umowa = $repo->find($id);
-        $em->remove($umowa);
-        $em->flush();
 
-        return $this->redirectToRoute('admin_umowy_pokaz');
+        $form = $this->createFormBuilder($umowa)
+                    ->add('podmiot')
+                    ->add('zadanie')
+                    ->add('pkd')
+                    ->add('uwagi')
+                    ->add('kwota')
+                    ->add('samorzad', EntityType::class, array(
+                        'class'=>'AppBundle:Samorzad',
+                        'choice_label'=>'samorzad'
+                    ))
+                    ->add('save', SubmitType::class)
+                    ->getForm();
+
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->addFlash('notice', "Pomyślnie zaktualizowano umowę.");
+            $em->flush();
+        }
+
+        return $this->render('admin/umowa_edit.html.twig', array(
+            'form'=>$form->createView(),
+        ));
+    }
+
+    function getAddForm($umowa, $admin){
+        $form = $this->createFormBuilder($umowa)
+            ->add('podmiot')
+            ->add('zadanie')
+            ->add('kwota')
+            ->add('pkd')
+            ->add('uwagi')
+            ->add('Zapisz i wyślij', SubmitType::class)
+            ->getForm();
+
+        if($admin){
+            $form->add('samorzad', EntityType::class, array(
+                'class' => 'AppBundle:Samorzad',
+                'choice_label' => 'samorzad',
+            ));
+        }
+
+        return $form;
     }
 }

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UmowyViewController extends Controller
 {
     /**
-     * @Route("/umowy/all", name="view_wszystkie")
+     * @Route("/umowy/all/", name="view_wszystkie")
      */
     public function wszystkieUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
@@ -30,7 +30,7 @@ class UmowyViewController extends Controller
     }
 
     /**
-     * @Route("/umowy", name="view_moje")
+     * @Route("/umowy/", name="view_moje")
      */
     public function mojeUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
