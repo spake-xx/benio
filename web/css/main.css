@@ -19,6 +19,14 @@ a {
   -o-transition: 300ms;
   transition: 300ms;
 }
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 3em;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }
 .btn {
   font-weight: 300;
   border: 0;
