@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {% include "user/navbar_user.html.twig" %}
+    <div class="container">
+        <div class="row" style="padding-top:78px">
+            <div class="col-md-12">
+                <div class="panel panel-user">
+                    <div class="panel-heading">
+                        <div><h3><div style="float: left; color: cyan;">|</div>  Wszystkie umowy ({{ umowy.getTotalItemCount }})
+                                {#<a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export moich wszystkich umów</a>#}
+                                <a class="btn btn-primary pull-right" href="{{ path('umowy_export') }}">Export wszystkich umów</a>
+                            </h3>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="count">
+
+                        </div>
+                        <table class="table table-stripped table-hover table-condensed table-umowy">
+                            <tr>
+                                <th {% if umowy.isSorted('u.id') %} class="sorted"{% endif %}>
+                                    {{ knp_pagination_sortable(umowy, 'Podmiot', 'u.id') }}
+                                </th>
+                                <th>
+                                    {{ knp_pagination_sortable(umowy, 'Zadanie', 'u.zadanie') }}
+                                </th>
+                                <th>
+                                    {{ knp_pagination_sortable(umowy, 'PKD', 'u.pkd') }}
+                                </th>
+                                <th>
+                                    {{ knp_pagination_sortable(umowy, 'Uwagi', 'u.uwagi') }}
+                                </th>
+                                <th>
+                                    {{ knp_pagination_sortable(umowy, 'Kwota', 'u.kwota') }}
+                                </th>
+                                <th>
+                                    {{ knp_pagination_sortable(umowy, 'Samorząd', 's.samorzad') }}
+                                </th>
+                            </tr>
+                            {% for i in umowy %}
+                                <tr>
+                                    <td>{{ i.podmiot }}</td>
+                                    <td>{{ i.zadanie }}</td>
+                                    <td>{{ i.pkd }}</td>
+                                    <td>{{ i.uwagi }}</td>
+                                    <td>{{ i.kwota }}</td>
+                                    <td>{{ i.samorzad.samorzad }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(umowy) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
