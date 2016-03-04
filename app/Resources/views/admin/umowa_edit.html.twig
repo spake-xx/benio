@@ -6,8 +6,8 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     {% endblock %}
 {% block body %}
+    {% include "user/navbar_user.html.twig" %}
 <div class="container" style="padding-top:78px">
-    <div class="col-md-6 col-offset-3">
         <div class="panel">
             <div class="panel-heading">
                 <h3><div style="float: left; color: cyan;">|</div>  Edycja
@@ -18,39 +18,45 @@
                     <div class="alert alert-success">{{ m }}</div>
                 {% endfor %}
                 {{form_start(form)}}
-                <div class='form-inline row form-add'>
+                <div class="form-inline row form-group">
+                    <div class="col-md-12">
+                        {{ form_errors(form.kwota) }}
+                        {{ form_errors(form.pkd) }}
+                        {{ form_errors(form.zadanie) }}
+                        {{ form_errors(form.podmiot) }}
+                        {{ form_errors(form.uwagi) }}
+                        {{ form_errors(form.samorzad) }}
+                    </div>
+                </div>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.kwota) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.kwota) }}</div>
-                    <div class='col-md-3'>{{ form_errors(form.kwota) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.kwota) }}</div>
                 </div>
-                <div class='form-inline row form-add'>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.pkd) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.pkd) }}</div>
-                    <div class='col-md-3'>{{ form_errors(form.pkd) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.pkd) }}</div>
                 </div>
-                <div class='form-inline row form-add'>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.zadanie) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.zadanie) }}</div>
-                    <div class='col-md-3'>{{ form_errors(form.zadanie) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.zadanie) }}</div>
                 </div>
-                <div class='form-inline row form-add'>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.podmiot) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.podmiot) }}</div>
-                    <div class='col-md-4'>{{ form_errors(form.podmiot) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.podmiot) }}</div>
                 </div>
-                <div class='form-inline row form-add'>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.uwagi) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.uwagi) }}</div>
-                    <div class='col-md-3'>{{ form_errors(form.uwagi) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.uwagi) }}</div>
                 </div>
-                <div class='form-inline row form-add'>
+                <div class='form-inline row form-add form-group'>
                     <div class='col-md-2'>{{ form_label(form.samorzad) }}</div>
-                    <div class='col-md-7'>{{ form_widget(form.samorzad) }}</div>
-                    <div class='col-md-3'>{{ form_errors(form.samorzad) }}</div>
+                    <div class='col-md-10'>{{ form_widget(form.samorzad) }}</div>
                 </div>
-                {{form_end(form)}}
+                <div class="form-inline row form-add col-md-10 col-md-offset-2">
+                {{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary btn-lg btn-block'},  'label': 'Edytuj' }) }}
+                </div>
+                    {{form_end(form)}}
             </div>
         </div>
-    </div>
 </div>
 {% endblock %}
