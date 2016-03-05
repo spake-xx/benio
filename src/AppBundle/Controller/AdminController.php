@@ -69,12 +69,13 @@ class AdminController extends Controller
 
         $form->handleRequest($request);
         if($form->isValid()){
-            $this->addFlash('notice', "Pomyślnie zaktualizowano umowę.");
+            $this->addFlash('notice', "Pomyślnie zedytowano usera.");
             $em->flush();
         }
 
-        return $this->render('admin/user_edit.html.twig', array(
+        return $this->render('admin/edit_user.html.twig', array(
             'form'=>$form->createView(),
+            'user'=>$user,
         ));
     }
 
