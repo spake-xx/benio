@@ -43,7 +43,7 @@ class DodawanieController extends Controller
             ->add('kwota')
             ->add('pkd')
             ->add('uwagi')
-            ->add('Zapisz i wyślij', SubmitType::class)
+            ->add('save', SubmitType::class)
             ->getForm();
 
         if($admin){
