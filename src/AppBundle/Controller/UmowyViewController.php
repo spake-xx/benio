@@ -30,7 +30,7 @@ class UmowyViewController extends Controller
     }
 
     /**
-     * @Route("/umowy/", name="view_moje")
+     * @Route("/user/umowy/", name="view_moje")
      */
     public function mojeUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
