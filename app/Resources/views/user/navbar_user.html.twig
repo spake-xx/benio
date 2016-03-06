@@ -22,6 +22,9 @@
                         <a href="{{ path('view_moje') }}">Moje umowy</a></li>
                     <li class="{% if app.request.get('_route') starts with 'umowa_add_choice' %} active {% endif %}">
                         <a href="{{ path('umowa_add_choice') }}">Dodaj umowę</a></li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">Wyloguj</a>
+                    </li>
                 </ul>
             </div>
         </div>
