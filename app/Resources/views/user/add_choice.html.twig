@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% include "user/navbar_user.html.twig" %}
-<div class='container'>
-	<div class='box'>
-		<div class="text-center panel-heading">
-		    <div class="pull-left"><h3><div style="float: left; color: cyan;">|</div>Wybierz jak chcesz dodać nową umowę</h3><br/></div>
+<div class="container" style="padding-top:78px">
+	<div class="panel">
+		<div class="panel-heading">
+		    <h3><div style="float: left; color: cyan;">|</div>Wybierz jak chcesz dodać nową umowę</h3><br/>
 		</div>
-		<div class="box">
-			<button type="button" class="btn btn-xlarge">
-				<a href="{{ path('umowy_import') }}">Importuj plik .CSV</a>
-			</button>
-  			<button type="button" class="btn btn-xlarge">
-  				<a href="{{ path('umowa_gmina') }}">Dodaj umowę formularzem</a>
-  			</button>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<button type="submit" href="{{ path('umowy_import') }}" class="btn btn-lg btn-primary btn-block">
+						Importuj plik .CSV
+					</button>
+				</div>
+				<div class="col-md-6 form-group">
+  					<button type="submit" href="{{ path('umowa_gmina') }}" class="btn btn-lg btn-primary btn-block">
+  						Dodaj umowę formularzem
+  					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+
 {% endblock %}
