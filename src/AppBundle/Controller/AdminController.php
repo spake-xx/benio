@@ -69,7 +69,7 @@ class AdminController extends Controller
 
         $form->handleRequest($request);
         if($form->isValid()){
-            $this->addFlash('notice', "Pomyślnie zedytowano usera.");
+            $this->addFlash('notice', 'Pomyślnie zedytowano użytkownika '.$user->getUsername());
             $em->flush();
         }
 
