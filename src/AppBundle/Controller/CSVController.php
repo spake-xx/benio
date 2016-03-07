@@ -106,7 +106,6 @@ class CSVController extends Controller
 
         $form->handleRequest($request);
         if($form->isValid()) {
-//            var_dump($form['samorzad']);
             $file = fopen($form['attachment']->getData(), 'rb');
             $context = array();
             $line = fgets($file);
@@ -144,6 +143,7 @@ class CSVController extends Controller
                 $umowa->setPkd($u[2]);
                 $umowa->setUwagi($u[3]);
                 $umowa->setKwota($u[4]);
+                $umowa->setSamorzad($form['samorzad']->getData());
 
                 $em->persist($umowa);
                 $em->flush();
