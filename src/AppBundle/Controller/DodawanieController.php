@@ -13,7 +13,7 @@ class DodawanieController extends Controller
 {
 
     /**
-     * @Route("/user/umowy/dodaj/", name="umowa_gmina")
+     * @Route("/user/choice/form/", name="umowa_gmina")
      */
     function NowaUmowaGminaAction(Request $request){
         $umowa = new Umowa();

@@ -10,7 +10,7 @@ fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 umowa_add_choice:
-    path: /umowa/dodaj/wybierz/
+    path: /user/choice/
     defaults:
         _controller:  FrameworkBundle:Template:template
         template:     'user/add_choice.html.twig'

@@ -18,7 +18,7 @@ class CSVController extends Controller
     private $pola = array('podmiot', 'zadanie', 'pkd', 'uwagi', 'kwota');
 
     /**
-     * @Route("/umowy/import/", name="umowy_import")
+     * @Route("/user/choice/import/", name="umowy_import")
      */
     public function UmowyImportAction(Request $request){
 //        $csv = $this->get('ddeboer_data_import.reader.csv');
@@ -87,7 +87,7 @@ class CSVController extends Controller
     }
 
     /**
-     * @Route("/umowy/export/", name="umowy_export")
+     * @Route("/user/export/", name="umowy_export")
      */
     public function umowyExportAction(){
         $em = $this->getDoctrine()->getManager();
