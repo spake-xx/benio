@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UmowyViewController extends Controller
 {
     /**
-     * @Route("/umowy/", name="view_wszystkie")
+     * @Route("/umowy/", name="wszystkie")
      */
     public function wszystkieUmowyAction(Request $request){
         $em = $this->getDoctrine()->getManager();
