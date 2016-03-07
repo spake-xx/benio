@@ -106,7 +106,6 @@ class CSVController extends Controller
 
         $form->handleRequest($request);
         if($form->isValid()) {
-//            var_dump($form['samorzad']);
             $file = fopen($form['attachment']->getData(), 'rb');
             $context = array();
             $line = fgets($file);
