@@ -152,7 +152,7 @@ class CSVController extends Controller
             fclose($file);
         }
 
-        return $this->render('user/import_form.html.twig', array(
+        return $this->render('admin/import_form.html.twig', array(
             'form'=>$form->createView(),
             'headers'=>$headers,
             'data'=>$Data,
