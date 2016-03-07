@@ -15,14 +15,14 @@
                 <ul class="nav navbar-nav">
                     <li class="{% if app.request.get('_route') starts with 'admin_index' %} active {% endif %}">
                         <a href="{{ path('admin_index') }}"><i class="icon-home"></i></a></li>
-                    <li>
+                    <li class="{% if app.request.get('_route') starts with 'admin_users' %} active {% endif %}">
                         <a href="{{ path('admin_users') }}">Użytkownicy</a></li>
                     <li class="{% if app.request.get('_route') starts with 'admin_umowy_pokaz' %} active {% endif %}">
                         <a href="{{ path('admin_umowy_pokaz') }}">Edycja umów</a></li>
                     <li class="{% if app.request.get('_route') starts with 'umowa_admin' %} active {% endif %}">
                         <a href="{{ path('umowa_admin') }}">Dodaj - formularz</a></li>
-                    <li>
-                        <a href="#">Dodaj - Import</a></li>
+                    <li class="{% if app.request.get('_route') starts with 'admin_import' %} active {% endif %}">
+                        <a href="{{ path('admin_import') }}">Dodaj - Import</a></li>
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">Wyloguj</a>
                     </li>
