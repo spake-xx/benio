@@ -12,5 +12,6 @@ services:
     tags:
       - {name: form.type, alias: app_user_registration}
 
-  ddeboer_data_import.reader.csv:
-    class: AppBundle\CSV\src\Reader\CsvReader
+  authentication.handler.login_success_handler:
+    class:  UserBundle\Handlers\LoginSuccessHandler
+    arguments:  ['@router', '@security.authorization_checker']
