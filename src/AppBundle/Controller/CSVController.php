@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Umowa;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -85,7 +86,78 @@ class CSVController extends Controller
             'data'=>$Data,
         ));
     }
+    /**
+     * @Route("/admin/import/", name="admin_import")
+     */
+    public function UmowyAdminImportAction(Request $request){
+//        $csv = $this->get('ddeboer_data_import.reader.csv');
+        $em = $this->getDoctrine()->getManager();
 
+        $headers = null;
+        $Data = null;
+
+        $builder = $this->createFormBuilder();
+        $form = $builder->add('attachment', FileType::class)
+            ->add('samorzad', EntityType::class, array(
+                'class'=>'AppBundle:Samorzad',
+                'choice_label'=>'samorzad',
+            ))
+            ->add('submit', SubmitType::class)->getForm();
+
+        $form->handleRequest($request);
+        if($form->isValid()) {
+//            var_dump($form['samorzad']);
+            $file = fopen($form['attachment']->getData(), 'rb');
+            $context = array();
+            $line = fgets($file);
+            $headers = $line;
+
+            while (!feof($file)) {
+                $line = fgets($file);
+                $context[] = $line;
+            }
+
+            $error = null;
+
+            $headers = str_getcsv($headers, ",", '"');
+            $pola = $this->pola;
+            foreach($pola as $k=>$p){
+                if($headers[$k]!=$p){
+                    $this->addFlash('warning', "Zła kolejność kolumn w pliku CSV !");
+                    return $this->render('user/import_form.html.twig', array(
+                        'form'=>$form->createView(),
+                    ));
+                }
+            }
+
+
+            $Data = array();
+            array_pop($context);
+            foreach($context as $linia){
+                $Data[] = str_getcsv($linia, ",", '"'); //parse the rows
+
+            }
+            foreach($Data as $u) {
+                $umowa = new Umowa();
+                $umowa->setPodmiot($u[0]);
+                $umowa->setZadanie($u[1]);
+                $umowa->setPkd($u[2]);
+                $umowa->setUwagi($u[3]);
+                $umowa->setKwota($u[4]);
+
+                $em->persist($umowa);
+                $em->flush();
+            }
+
+            fclose($file);
+        }
+
+        return $this->render('user/import_form.html.twig', array(
+            'form'=>$form->createView(),
+            'headers'=>$headers,
+            'data'=>$Data,
+        ));
+    }
     /**
      * @Route("/user/export/", name="umowy_export")
      */
