@@ -143,6 +143,7 @@ class CSVController extends Controller
                 $umowa->setPkd($u[2]);
                 $umowa->setUwagi($u[3]);
                 $umowa->setKwota($u[4]);
+                $umowa->setSamorzad($form['samorzad']->getData());
 
                 $em->persist($umowa);
                 $em->flush();
