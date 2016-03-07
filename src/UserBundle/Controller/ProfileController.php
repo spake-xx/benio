@@ -11,6 +11,7 @@ class ProfileController extends BaseController
     /**
      * Show the user
      */
+
     public function showAction()
     {
         $user = $this->getUser();
